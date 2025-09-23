@@ -1,0 +1,13 @@
+.root {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.root:disabled {
+  cursor: not-allowed;
+}
+
+.selected {
+  border: 1px solid black;
+}
