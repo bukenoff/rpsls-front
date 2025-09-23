@@ -1,20 +1,12 @@
-import {
-  createElement,
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 import "./App.css";
 import { socket } from "./socket";
 import { RPSLS_OPTIONS, ACTIONS } from "./const";
-import { ICONS } from "./assets";
 import { OptionName } from "./types";
 import { OptionItem } from "./components/OptionItem/OptionItem";
 
 export function App() {
-  console.log("socket is", socket);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [choice, setChoice] = useState<OptionName>();
   const [isOptionSelected, setIsOptionSelected] = useState(false);
@@ -23,7 +15,6 @@ export function App() {
   const handleOptionClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
       if (isOptionSelected) return;
-      console.log("event val", event.currentTarget.value);
       socket.emit(ACTIONS.SELECT_OPTION, event.currentTarget.value);
     },
     [isOptionSelected],
@@ -32,22 +23,17 @@ export function App() {
   useEffect(() => {
     function onConnect() {
       setIsConnected(true);
-      console.log("hello I am here");
     }
 
     function onDisconnect() {
       setIsConnected(false);
-
-      console.log("hello I am onDisconnect");
     }
 
     function onOutcomeSent(outcome: any) {
       setOutcome(outcome);
-      console.log("Outcome is", outcome);
     }
 
     function onOptionSelected(option: string) {
-      console.log("option was selected on server", option);
       setIsOptionSelected(true);
       setChoice(option as OptionName);
     }
