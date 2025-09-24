@@ -1,4 +1,6 @@
-export const RPSLS_OPTIONS: { value: string; label: string; icon: string }[] = [
+import type { Option } from "../types";
+
+export const RPSLS_OPTIONS: Option[] = [
   {
     value: "rock",
     label: "Rock",
@@ -24,7 +26,7 @@ export const RPSLS_OPTIONS: { value: string; label: string; icon: string }[] = [
     label: "Spock",
     icon: "🖖",
   },
-] as const;
+];
 
 export const ACTIONS = {
   SELECT_OPTION: "selectOption",

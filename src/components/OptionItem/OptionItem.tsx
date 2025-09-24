@@ -30,6 +30,7 @@ export const OptionItem: FC<OptionItemProps> = ({
       type="button"
       value={value}
       onClick={onClick}
+      tabIndex={0}
     >
       {icon}
     </button>
