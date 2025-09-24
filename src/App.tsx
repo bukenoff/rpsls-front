@@ -4,7 +4,8 @@ import "./App.css";
 import { socket } from "./socket";
 import { RPSLS_OPTIONS, ACTIONS } from "./const";
 import { OptionName } from "./types";
-import { OptionItem } from "./components/OptionItem/OptionItem";
+import { OptionItem } from "./components/OptionItem";
+import { OptionList } from "./components/OptionList";
 
 export function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -68,18 +69,19 @@ export function App() {
       ) : (
         <>
           <h3>Choose your move</h3>
-          <ul className="options">
-            {RPSLS_OPTIONS.map((option: any) => (
+          <OptionList>
+            {RPSLS_OPTIONS.map((option) => (
               <OptionItem
                 key={option.value}
                 disabled={isOptionSelected}
+                icon={option.icon}
                 label={option.label}
                 value={option.value}
                 onClick={handleOptionClick}
                 isSelected={option.value === choice}
               />
             ))}
-          </ul>
+          </OptionList>
         </>
       )}
     </>

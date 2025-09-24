@@ -5,6 +5,7 @@ import classes from "./OptionItem.module.css";
 
 type OptionItemProps = {
   disabled: boolean;
+  icon: string;
   label: string;
   value: string;
   isSelected: boolean;
@@ -13,6 +14,7 @@ type OptionItemProps = {
 
 export const OptionItem: FC<OptionItemProps> = ({
   disabled,
+  icon,
   label,
   value,
   isSelected,
@@ -20,7 +22,7 @@ export const OptionItem: FC<OptionItemProps> = ({
 }) => {
   return (
     <button
-      key={value}
+      aria-label={label}
       disabled={disabled}
       className={clsx(classes["root"], {
         [classes["selected"]]: isSelected,
@@ -29,7 +31,7 @@ export const OptionItem: FC<OptionItemProps> = ({
       value={value}
       onClick={onClick}
     >
-      {label}
+      {icon}
     </button>
   );
 };

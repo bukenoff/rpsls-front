@@ -1,34 +1,28 @@
-import RockIcon from "../assets/rock.svg";
-import PaperIcon from "../assets/paper.svg";
-import ScissorsIcon from "../assets/scissors.svg";
-import LizardIcon from "../assets/lizard.svg";
-import SpockIcon from "../assets/spock.svg";
-
-export const RPSLS_OPTIONS = [
+export const RPSLS_OPTIONS: { value: string; label: string; icon: string }[] = [
   {
     value: "rock",
     label: "Rock",
-    icon: RockIcon,
+    icon: "🪨",
   },
   {
     value: "paper",
     label: "Paper",
-    icon: PaperIcon,
+    icon: "📃",
   },
   {
     value: "scissors",
     label: "Scissors",
-    icon: ScissorsIcon,
+    icon: "✂️",
   },
   {
     value: "lizard",
     label: "Lizard",
-    icon: LizardIcon,
+    icon: "🦎",
   },
   {
     value: "spock",
     label: "Spock",
-    icon: SpockIcon,
+    icon: "🖖",
   },
 ] as const;
 

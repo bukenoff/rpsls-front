@@ -6,12 +6,6 @@ html {
   height: 100%;
 }
 
-.options {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0;
-}
-
 h1,
 h3 {
   text-align: center;
