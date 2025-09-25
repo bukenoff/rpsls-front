@@ -32,4 +32,6 @@ export const ACTIONS = {
   SELECT_OPTION: "selectOption",
   OPTION_SELECTED: "optionSelected",
   GAME_OUTCOME_SENT: "gameOutcomeSent",
+  RESET_STATE: "resetState",
+  STATE_RESET: "stateReset",
 } as const;
