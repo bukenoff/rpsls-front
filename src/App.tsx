@@ -2,10 +2,11 @@ import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 import "./App.css";
 import { socket } from "./socket";
-import { RPSLS_OPTIONS, ACTIONS } from "./const";
+import { RPSLS_OPTIONS, ACTIONS } from "./const/index";
 import { Option, OptionName, Outcome } from "./types";
 import { OptionItem } from "./components/OptionItem";
 import { OptionList } from "./components/OptionList";
+import { OutcomeView } from "./components/OutcomeView";
 
 export function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -69,13 +70,7 @@ export function App() {
     <>
       <h1>Rock Paper Scissors</h1>
       {outcome ? (
-        <>
-          <div>{outcome.label}</div>
-          <div>Your choice: {outcome.your_choice}</div>
-          <div>Their choice: {outcome.their_choice}</div>
-          <div>{outcome.description}</div>
-          <button onClick={resetState}>New round</button>
-        </>
+        <OutcomeView outcome={outcome} resetState={resetState} />
       ) : (
         <>
           <h3>Choose your move</h3>
