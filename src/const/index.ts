@@ -34,4 +34,6 @@ export const ACTIONS = {
   GAME_OUTCOME_SENT: "gameOutcomeSent",
   RESET_STATE: "resetState",
   STATE_RESET: "stateReset",
+  UPDATE_STATE: "updateState",
+  STATE_UPDATED: "stateUpdated",
 } as const;

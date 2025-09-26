@@ -10,6 +10,7 @@ import { OutcomeView } from "./components/OutcomeView";
 
 export function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
+  const [state, setState] = useState("idle");
   const [choice, setChoice] = useState<OptionName>();
   const [outcome, setOutcome] = useState<Outcome>();
 
@@ -47,11 +48,16 @@ export function App() {
       setOutcome(undefined);
     }
 
+    function onStateUpdated(value: string) {
+      setState(value);
+    }
+
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
     socket.on(ACTIONS.OPTION_SELECTED, onOptionSelected);
     socket.on(ACTIONS.GAME_OUTCOME_SENT, onOutcomeSent);
     socket.on(ACTIONS.STATE_RESET, onStateReset);
+    socket.on(ACTIONS.STATE_UPDATED, onStateUpdated);
 
     return () => {
       socket.off("connect", onConnect);
@@ -59,11 +65,16 @@ export function App() {
       socket.off(ACTIONS.OPTION_SELECTED, onOptionSelected);
       socket.off(ACTIONS.GAME_OUTCOME_SENT, onOutcomeSent);
       socket.off(ACTIONS.STATE_RESET, onStateReset);
+      socket.off(ACTIONS.STATE_UPDATED, onStateUpdated);
     };
   }, []);
 
   if (!isConnected) {
     return "Loading...";
+  }
+
+  if (state === "idle") {
+    return "Waiting for an opponent";
   }
 
   return (
